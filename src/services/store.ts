@@ -2,8 +2,6 @@ import type { TableModel, TableStore } from "../types";
 
 import slugify from "slugify";
 
-import { CURRENT_TABLE_VERSION } from "../constants";
-
 const TABLES_KEY = "tables";
 
 const defaultSerializer = JSON.stringify;
@@ -37,7 +35,6 @@ function doSaveTable(
   if (!override && tables[key]) {
     throw new Error("Table already exists");
   }
-  table.__v = CURRENT_TABLE_VERSION;
   tables[key] = table;
   storeTableList(tables);
 }
@@ -48,4 +45,10 @@ export function storeTable(table: TableModel, tableKey?: string): void {
 
 export function updateTable(table: TableModel, tableKey?: string): void {
   doSaveTable(table, true, tableKey);
+}
+
+export function deleteTable(key: string) {
+  const tables = getTableList();
+  delete tables[key];
+  storeTableList(tables);
 }

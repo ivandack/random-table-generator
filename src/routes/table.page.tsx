@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 
-import { getTable } from "../services/store";
-
 import { TablePageContent } from "../components/scenes/Table/TableContent.component";
+import TableLayout from "../components/layouts/Table.layout";
+
+import { useTableStorage } from "../services/useTableStorage";
 
 export const TablePage = () => {
   const { tableId } = useParams();
+  const { getTable } = useTableStorage();
 
   if (!tableId) {
     throw new Error("No table id specified");
@@ -17,5 +19,9 @@ export const TablePage = () => {
     return <>No table with the key "{tableId}"</>;
   }
 
-  return <TablePageContent table={table} />;
+  return (
+    <TableLayout title={table.name}>
+      <TablePageContent table={table} />
+    </TableLayout>
+  );
 };
