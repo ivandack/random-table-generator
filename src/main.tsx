@@ -8,17 +8,20 @@ import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App.tsx";
 import { MuiTheme } from "./theme/muiTheme.ts";
 
-const router = createHashRouter([
-  {
-    path: "/*",
-    element: (
-      <ThemeProvider theme={MuiTheme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
-    ),
-  },
-]);
+const router = createHashRouter(
+  [
+    {
+      path: "/*",
+      element: (
+        <ThemeProvider theme={MuiTheme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      ),
+    },
+  ],
+  { basename: process.env.PUBLIC_URL }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
