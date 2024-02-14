@@ -4,7 +4,7 @@
   "version": "0.5.0",
   "type": "module",
   "description": "Small web app to manage and roll random tables",
-  "homepage": "https://ivandack.github.io/random-table-generator",
+  "homepage": "https://ivandack.github.io/random-table-generator/",
   "author": {
     "email": "ivandack@gmail.com",
     "name": "Ivan Dackiewicz"
